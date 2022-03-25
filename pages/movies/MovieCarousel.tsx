@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { IMovie } from '../services/MovieService'
 import { IoIosArrowDropleft as LeftArrowIcon } from '@react-icons/all-files/io/IoIosArrowDropleft'
 import { IoIosArrowDropright as RightArrowIcon } from '@react-icons/all-files/io/IoIosArrowDropright'
+import Image from 'next/image'
 
 interface IMovieCarouselProps {
   data: IMovie[]
@@ -48,7 +49,7 @@ const MovieCarousel: FunctionComponent<IMovieCarouselProps> = ({ data: movies, o
       trackElement.style.transform = `translate3d(${-nextPosition}px, 0, 0)`
       setSwipePosition(nextPosition)
     }
-  }, [contentRef.current, swipePosition])
+  }, [swipePosition])
 
   return (
     <MovieCarouselContainer className='movie-carousel'>
@@ -71,7 +72,7 @@ const MovieCarousel: FunctionComponent<IMovieCarouselProps> = ({ data: movies, o
                 )}
                 key={`carousel__figure--${m.Id}`}
                 onClick={() => onSelect(m.Id)}>
-                {Boolean(m.Poster) && <img src={m.Poster} alt={`${movieTitle} Thumbnail`} />}
+                {Boolean(m.Poster) && <Image src={m.Poster} alt={`${movieTitle} Thumbnail`} layout='fill' />}
                 <figcaption>
                   { selectedId === m.Id
                     ? 'Viewing details'
@@ -187,6 +188,7 @@ const MovieCarouselContainer = styled.div`
   }
 
   .carousel__figure {
+    max-width: 150px;
     flex: 1 0 150px;
     position: relative;
     display: flex;
@@ -196,6 +198,9 @@ const MovieCarouselContainer = styled.div`
     overflow: hidden;
     cursor: pointer;
     margin: 0 0.5rem;
+
+    position: relative;
+    height: 230px;
 
     &:first-child {
       margin-left: 0;

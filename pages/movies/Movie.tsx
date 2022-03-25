@@ -3,11 +3,13 @@ import styled from 'styled-components'
 import { IMovie } from '../services/MovieService'
 import map from 'lodash-es/map'
 import get from 'lodash-es/get'
+import Image from 'next/image'
 
 interface IMovielProps {
   data?: IMovie
+  selectGenre: Function
 }
-const Movie: FunctionComponent<IMovielProps> = ({ data: movie }) => {
+const Movie: FunctionComponent<IMovielProps> = ({ data: movie, selectGenre }) => {
   if (!movie) {
     return <></>
   }
@@ -30,7 +32,7 @@ const Movie: FunctionComponent<IMovielProps> = ({ data: movie }) => {
       <div className='movie__contents'>
         {Boolean(movie.Poster) && (
           <figure className='movie__poster'>
-            <img src={movie.Poster} alt={`${movie?.Title} Poster`} />
+            <Image src={movie.Poster} alt={`${movie?.Title} Poster`} layout='fill' />
           </figure>
         )}
         <div className='movie__details'>
@@ -49,9 +51,10 @@ const Movie: FunctionComponent<IMovielProps> = ({ data: movie }) => {
           })}
           <div className='movie__detail' key='details__gernes'>
             <label className='detail__label'>Gernes:</label>
+            <small>Click on any genres below to see related movies</small>
             <ul className='detail__value detail__genres'>
-              {movie.Genre.split(/,\s*/).filter(Boolean).map(genreName => (
-                <li>{genreName}</li>
+              {movie.Genres.map(genreName => (
+                <li className='detail_genre' key={`genre__${genreName}`} onClick={() => selectGenre(genreName)}>{genreName}</li>
               ))}
             </ul>
           </div>
@@ -87,6 +90,8 @@ const MovieContainer = styled.div`
     flex-direction: column;
 
     flex: 0 1 230px;
+    position: relative;
+    min-height: 300px;
   }
 
   .movie__details {
@@ -107,6 +112,16 @@ const MovieContainer = styled.div`
     margin: 0.5rem 0;
   }
 
+  .detail_genre {
+    margin-bottom: 0.3rem;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: #069;
+    }
+  }
+
   .visible-lg {
     display: none;
   }
@@ -115,6 +130,7 @@ const MovieContainer = styled.div`
 
     .movie__poster {
       flex-basis: 300px;
+      min-height: 400px;
     }
 
     .movie__details {

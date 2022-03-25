@@ -5,6 +5,7 @@ import MovieService, { IMovie } from './services/MovieService'
 
 const MovieCarousel = dynamic(() => import('./movies/MovieCarousel'))
 const Movie = dynamic(() => import('./movies/Movie'))
+const MovieFilter = dynamic(() => import('./movies/MovieFilter'))
 
 export async function getServerSideProps() {
   const movies = await MovieService.getMovies()
@@ -19,10 +20,14 @@ interface IMovieListProps {
 }
 const Index: NextPage<IMovieListProps> = ({ data }) => {
   const [selectedId, selectMovieId] = useState<string>()
+  const [selectedGenre, selectGenre] = useState<string>()
   return (
     <main>
-      <Movie data={data.find(m => m.Id === selectedId)} />
-      <MovieCarousel data={data} onSelect={selectMovieId} selectedId={selectedId} />
+      <Movie data={data.find(m => m.Id === selectedId)} selectGenre={selectGenre} />
+      <MovieFilter data={data} selectedGenre={selectedGenre} selectGenre={selectGenre} />
+      <MovieCarousel data={selectedGenre ? data.filter(m => m.Genres.includes(selectedGenre)) : data}
+        onSelect={selectMovieId}
+        selectedId={selectedId} />
     </main>
   )
 }
