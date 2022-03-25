@@ -1,34 +1,107 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Vue Map Challenge (challenge-vue-map)
+=====
+Movie listing app built with NextJS SSR
 
-## Getting Started
+**Table of Contents**
+* [Technologies](#technologies)
+* [Previews](#previews)
+* [Development](#development)
+  + [Setup local](#setup-local)
+  + [Start development](#start-development)
+  + [Folder structure](#folder-structure)
+  + [Customize configuration](#customize-configuration)
+* [Deployment](#deployment)
+  + [Build production](#build-production)
+  + [Deploy to vercel](#deploy-to-vercel)
+* [Contribution](#contribution)
 
-First, run the development server:
+Technologies
+-----
+- [NextJS](https://nextjs.org) server-side rendering
+- [React 17](https://reactjs.org/blog/2020/10/20/react-v17.html)
+- [Styled components](https://styled-components.com)
 
-```bash
-npm run dev
-# or
+Previews
+----
+A demo website can be accessed at https://challenge-next-movies.vercel.app (Tested with Chrome on laptop and phone)
+
+Here are some screenshots
+
+<table border="0">
+ <tr>
+    <td>
+      <img width="332" alt="image" src="https://user-images.githubusercontent.com/13363340/160099637-35bc96f0-da51-491a-8256-ea671e2ad4ff.png">
+    </td>
+    <td>
+    <img width="328" alt="image" src="https://user-images.githubusercontent.com/13363340/160099543-44173759-c866-4f7b-81c2-ffa7dd175f07.png"> 
+   </td>
+    <td>
+      <img width="335" alt="image" src="https://user-images.githubusercontent.com/13363340/160099825-e65e2cd9-7b70-4934-891c-41165ed7c1e6.png">
+   </td>
+ </tr>
+ <tr>
+  <td align="center">
+    Movies listed in carousel
+  </td>
+  <td align="center">
+    Select movie to view details
+  </td>
+  <td align="center">
+    Click on genre or select dropdown to filter movies
+  </td>
+ </tr>
+</table>
+
+
+Development
+----
+### Setup local
+
+- Please run this command to install required dependencies
+  ```
+  yarn
+  ```
+### Start development
+
+This command will start a quasar development server, which will also watch your file changes to live-reload
+```
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can preview your changes at http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Folder structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Here is basic structure of source folder, which I regrouped some components from quasar's default boilerplate for ease of maintenance in a modular way:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+src
+ |- app
+     |- services    // Services
+     |- movies     // Movie components
+ |- pages    // pages
+ |- ...
+```
+### Customize configuration
 
-## Learn More
+See [Configuring next.config.js](https://nextjs.org/docs/api-reference/next.config.js/introduction).
 
-To learn more about Next.js, take a look at the following resources:
+Deployment
+----
+### Build production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For a production-ready build of the application, please use this command:
+```
+yarn build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Deploy to vercel 
 
-## Deploy on Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hungluu/challenge-next-movies)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contribution
+-----
+All contributions are welcomed. Feel free to clone this project, make changes that your feel necessary and pull request anytime you want.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+🍻 Cheers.
