@@ -1,5 +1,6 @@
 {
   "name": "next-movies",
+  "description": "NextJS Movie App with SSR",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,13 +10,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "classnames": "^2.3.1",
+    "lodash-es": "^4.17.21",
     "next": "12.1.0",
+    "normalize.css": "^8.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "17.0.23",
     "@types/react": "17.0.42",
+    "@types/styled-components": "^5.1.24",
+    "babel-plugin-styled-components": "^2.0.6",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "typescript": "4.6.2"
