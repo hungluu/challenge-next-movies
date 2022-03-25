@@ -1,14 +1,14 @@
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import MovieService, { IMovie } from './services/MovieService'
+import MovieService, { IMovie } from '../app/services/MovieService'
 
-const MovieCarousel = dynamic(() => import('./movies/MovieCarousel'))
-const Movie = dynamic(() => import('./movies/Movie'))
-const MovieFilter = dynamic(() => import('./movies/MovieFilter'))
+const MovieCarousel = dynamic(() => import('../app/movies/MovieCarousel'))
+const Movie = dynamic(() => import('../app/movies/Movie'))
+const MovieFilter = dynamic(() => import('../app/movies/MovieFilter'))
 
 export async function getServerSideProps() {
-  const movies = await MovieService.getMovies()
+  const movies = await (new MovieService).getMovies()
   return {
     props: {
       data: movies

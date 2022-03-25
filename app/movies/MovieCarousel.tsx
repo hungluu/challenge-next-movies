@@ -12,7 +12,7 @@ interface IMovieCarouselProps {
   selectedId?: string
 }
 const MovieCarousel: FunctionComponent<IMovieCarouselProps> = ({ data: movies, onSelect, selectedId }) => {
-  const contentRef = useRef<HTMLDivElement>()
+  const contentRef = useRef<HTMLDivElement>(null)
   const [swipable, setSwipable] = useState<{left: boolean, right: boolean}>({
     left: false,
     right: false

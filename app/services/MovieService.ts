@@ -14,7 +14,7 @@ export interface IMovie {
   Genres: string[]
 }
 export default class MovieService {
-  static async getMovies() {
+  async getMovies() {
     const res = await fetch('http://run.mocky.io/v3/d03e0886-f5c8-4961-902d-51bfe8059a33')
     const movies = await res.json() as IMovie[]
 
