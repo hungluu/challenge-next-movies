@@ -4,6 +4,7 @@ import { useState } from 'react'
 import MovieService, { IMovie } from './services/MovieService'
 
 const MovieCarousel = dynamic(() => import('./movies/MovieCarousel'))
+const Movie = dynamic(() => import('./movies/Movie'))
 
 export async function getServerSideProps() {
   const movies = await MovieService.getMovies()
@@ -20,6 +21,7 @@ const Index: NextPage<IMovieListProps> = ({ data }) => {
   const [selectedId, selectMovieId] = useState<string>()
   return (
     <main>
+      <Movie data={data.find(m => m.Id === selectedId)} />
       <MovieCarousel data={data} onSelect={selectMovieId} selectedId={selectedId} />
     </main>
   )
